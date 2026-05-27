@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 module "eks" {
-  source = "github.com/thadeuguimaraes/mandalor-eks-module?ref=v1.0.0"
+  source = "github.com/thadeuoguimaraes/mandalor-eks-module?ref=v1.0.0"
 
   cluster_name       = var.cluster_name
   kubernetes_version = "1.32"

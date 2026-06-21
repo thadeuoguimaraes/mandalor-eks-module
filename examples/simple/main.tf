@@ -7,7 +7,7 @@ module "eks" {
   source = "github.com/thadeuoguimaraes/mandalor-eks-module?ref=v1.0.0"
 
   cluster_name       = var.cluster_name
-  kubernetes_version = "1.32"
+  kubernetes_version = "1.33"
 
   vpc_id             = var.vpc_id
   private_subnet_ids = var.private_subnet_ids
@@ -29,10 +29,10 @@ module "eks" {
   enable_node_group_graviton = false
 
   eks_addons = var.eks_addons != null ? var.eks_addons : {
-    vpc-cni            = { version = "v1.21.1-eksbuild.8" }
-    coredns            = { version = "v1.11.4-eksbuild.33" }
-    kube-proxy         = { version = "v1.32.13-eksbuild.8" }
-    aws-ebs-csi-driver = { version = "v1.59.0-eksbuild.1" }
+    vpc-cni            = { version = "v1.22.2-eksbuild.1" }
+    coredns            = { version = "v1.13.2-eksbuild.11" }
+    kube-proxy         = { version = "v1.33.10-eksbuild.13" }
+    aws-ebs-csi-driver = { version = "v1.62.0-eksbuild.1" }
   }
 
   tags = {

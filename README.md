@@ -19,7 +19,7 @@ module "eks" {
   source = "github.com/seu-org/terraform-aws-eks"
 
   cluster_name       = "meu-cluster"
-  kubernetes_version = "1.32"
+  kubernetes_version = "1.33"
 
   vpc_id             = "vpc-xxxx"
   private_subnet_ids = ["subnet-aaa", "subnet-bbb", "subnet-ccc"]
@@ -140,11 +140,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_authentication_mode"></a> [authentication\_mode](#input\_authentication\_mode) | Modo de autenticação do cluster (API \| CONFIG\_MAP \| API\_AND\_CONFIG\_MAP). | `string` | `"API_AND_CONFIG_MAP"` | no |
-| <a name="input_cert_manager_chart_version"></a> [cert\_manager\_chart\_version](#input\_cert\_manager\_chart\_version) | Versão do Helm chart do Cert Manager. | `string` | `"v1.17.2"` | no |
-| <a name="input_cluster_autoscaler_chart_version"></a> [cluster\_autoscaler\_chart\_version](#input\_cluster\_autoscaler\_chart\_version) | Versão do Helm chart do Cluster Autoscaler. | `string` | `"9.57.0"` | no |
+| <a name="input_cert_manager_chart_version"></a> [cert\_manager\_chart\_version](#input\_cert\_manager\_chart\_version) | Versão do Helm chart do Cert Manager. | `string` | `"v1.20.2"` | no |
+| <a name="input_cluster_autoscaler_chart_version"></a> [cluster\_autoscaler\_chart\_version](#input\_cluster\_autoscaler\_chart\_version) | Versão do Helm chart do Cluster Autoscaler. | `string` | `"9.58.0"` | no |
 | <a name="input_cluster_log_types"></a> [cluster\_log\_types](#input\_cluster\_log\_types) | Tipos de log do control plane a habilitar. | `list(string)` | <pre>[<br/>  "api",<br/>  "audit",<br/>  "authenticator",<br/>  "controllerManager",<br/>  "scheduler"<br/>]</pre> | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Nome do cluster EKS. | `string` | n/a | yes |
-| <a name="input_eks_addons"></a> [eks\_addons](#input\_eks\_addons) | Mapa de addons EKS a instalar. A chave é o nome do addon. | <pre>map(object({<br/>    version                     = string<br/>    resolve_conflicts_on_create = optional(string, "OVERWRITE")<br/>    resolve_conflicts_on_update = optional(string, "OVERWRITE")<br/>    configuration_values        = optional(string, null)<br/>  }))</pre> | <pre>{<br/>  "aws-ebs-csi-driver": {<br/>    "version": "v1.39.0-eksbuild.1"<br/>  },<br/>  "coredns": {<br/>    "version": "v1.13.2-eksbuild.7"<br/>  },<br/>  "kube-proxy": {<br/>    "version": "v1.34.6-eksbuild.2"<br/>  },<br/>  "vpc-cni": {<br/>    "version": "v1.20.5-eksbuild.1"<br/>  }<br/>}</pre> | no |
+| <a name="input_eks_addons"></a> [eks\_addons](#input\_eks\_addons) | Mapa de addons EKS a instalar. A chave é o nome do addon. | <pre>map(object({<br/>    version                     = string<br/>    resolve_conflicts_on_create = optional(string, "OVERWRITE")<br/>    resolve_conflicts_on_update = optional(string, "OVERWRITE")<br/>    configuration_values        = optional(string, null)<br/>  }))</pre> | <pre>{<br/>  "aws-ebs-csi-driver": {<br/>    "version": "v1.62.0-eksbuild.1"<br/>  },<br/>  "coredns": {<br/>    "version": "v1.13.2-eksbuild.11"<br/>  },<br/>  "kube-proxy": {<br/>    "version": "v1.33.10-eksbuild.13"<br/>  },<br/>  "vpc-cni": {<br/>    "version": "v1.22.2-eksbuild.1"<br/>  }<br/>}</pre> | no |
 | <a name="input_enable_cert_manager"></a> [enable\_cert\_manager](#input\_enable\_cert\_manager) | Instala o Cert Manager via Helm. | `bool` | `false` | no |
 | <a name="input_enable_cluster_autoscaler"></a> [enable\_cluster\_autoscaler](#input\_enable\_cluster\_autoscaler) | Instala o Cluster Autoscaler via Helm. | `bool` | `true` | no |
 | <a name="input_enable_ingress_nginx"></a> [enable\_ingress\_nginx](#input\_enable\_ingress\_nginx) | Instala o Ingress NGINX Controller via Helm. | `bool` | `false` | no |
@@ -158,11 +158,11 @@ No modules.
 | <a name="input_enable_node_group_spot"></a> [enable\_node\_group\_spot](#input\_enable\_node\_group\_spot) | Habilita o node group SPOT (Amazon Linux 2). | `bool` | `false` | no |
 | <a name="input_enable_node_termination_handler"></a> [enable\_node\_termination\_handler](#input\_enable\_node\_termination\_handler) | Instala o AWS Node Termination Handler via Helm (recomendado com SPOT). | `bool` | `false` | no |
 | <a name="input_enable_zonal_shift"></a> [enable\_zonal\_shift](#input\_enable\_zonal\_shift) | Habilita Zonal Shift no cluster. | `bool` | `true` | no |
-| <a name="input_ingress_nginx_chart_version"></a> [ingress\_nginx\_chart\_version](#input\_ingress\_nginx\_chart\_version) | Versão do Helm chart do Ingress NGINX. | `string` | `"4.12.2"` | no |
+| <a name="input_ingress_nginx_chart_version"></a> [ingress\_nginx\_chart\_version](#input\_ingress\_nginx\_chart\_version) | Versão do Helm chart do Ingress NGINX. | `string` | `"4.15.1"` | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | ARN de uma KMS key existente. Se vazio e enable\_kms\_encryption=true, cria uma nova. | `string` | `""` | no |
 | <a name="input_kube_state_metrics_chart_version"></a> [kube\_state\_metrics\_chart\_version](#input\_kube\_state\_metrics\_chart\_version) | Versão do Helm chart do Kube State Metrics. | `string` | `"5.30.0"` | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Versão do Kubernetes. | `string` | `"1.32"` | no |
-| <a name="input_metrics_server_chart_version"></a> [metrics\_server\_chart\_version](#input\_metrics\_server\_chart\_version) | Versão do Helm chart do Metrics Server. | `string` | `"3.13.0"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Versão do Kubernetes. | `string` | `"1.33"` | no |
+| <a name="input_metrics_server_chart_version"></a> [metrics\_server\_chart\_version](#input\_metrics\_server\_chart\_version) | Versão do Helm chart do Metrics Server. | `string` | `"3.13.1"` | no |
 | <a name="input_node_group_critical_instance_types"></a> [node\_group\_critical\_instance\_types](#input\_node\_group\_critical\_instance\_types) | Tipos de instância do node group crítico. | `list(string)` | <pre>[<br/>  "t3.xlarge"<br/>]</pre> | no |
 | <a name="input_node_group_critical_scaling"></a> [node\_group\_critical\_scaling](#input\_node\_group\_critical\_scaling) | Configuração de scaling do node group crítico. | <pre>object({<br/>    min     = number<br/>    max     = number<br/>    desired = number<br/>  })</pre> | <pre>{<br/>  "desired": 2,<br/>  "max": 5,<br/>  "min": 1<br/>}</pre> | no |
 | <a name="input_node_group_graviton_instance_types"></a> [node\_group\_graviton\_instance\_types](#input\_node\_group\_graviton\_instance\_types) | Tipos de instância Graviton (ARM64). | `list(string)` | <pre>[<br/>  "t4g.large",<br/>  "c7g.large"<br/>]</pre> | no |

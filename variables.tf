@@ -10,7 +10,7 @@ variable "cluster_name" {
 variable "kubernetes_version" {
   type        = string
   description = "Versão do Kubernetes."
-  default     = "1.32"
+  default     = "1.33"
 }
 
 variable "cluster_log_types" {
@@ -233,16 +233,16 @@ variable "eks_addons" {
   description = "Mapa de addons EKS a instalar. A chave é o nome do addon."
   default = {
     vpc-cni = {
-      version = "v1.20.5-eksbuild.1"
+      version = "v1.22.2-eksbuild.1"
     }
     coredns = {
-      version = "v1.13.2-eksbuild.7"
+      version = "v1.13.2-eksbuild.11"
     }
     kube-proxy = {
-      version = "v1.34.6-eksbuild.2"
+      version = "v1.33.10-eksbuild.13"
     }
     aws-ebs-csi-driver = {
-      version = "v1.39.0-eksbuild.1"
+      version = "v1.62.0-eksbuild.1"
     }
   }
 }
@@ -260,7 +260,7 @@ variable "enable_cluster_autoscaler" {
 variable "cluster_autoscaler_chart_version" {
   type        = string
   description = "Versão do Helm chart do Cluster Autoscaler."
-  default     = "9.57.0"
+  default     = "9.58.0"
 }
 
 # ─────────────────────────────────────────────
@@ -276,7 +276,7 @@ variable "enable_metrics_server" {
 variable "metrics_server_chart_version" {
   type        = string
   description = "Versão do Helm chart do Metrics Server."
-  default     = "3.13.0"
+  default     = "3.13.1"
 }
 
 # ─────────────────────────────────────────────
@@ -324,7 +324,7 @@ variable "enable_ingress_nginx" {
 variable "ingress_nginx_chart_version" {
   type        = string
   description = "Versão do Helm chart do Ingress NGINX."
-  default     = "4.12.2"
+  default     = "4.15.1"
 }
 
 # ─────────────────────────────────────────────
@@ -340,5 +340,5 @@ variable "enable_cert_manager" {
 variable "cert_manager_chart_version" {
   type        = string
   description = "Versão do Helm chart do Cert Manager."
-  default     = "v1.17.2"
+  default     = "v1.20.2"
 }

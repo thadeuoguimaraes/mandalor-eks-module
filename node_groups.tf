@@ -5,7 +5,7 @@ locals {
   } : {}
 }
 
-# ─── Main (ON_DEMAND, Amazon Linux 2) ───────────────────────────────────────
+# ─── Main (ON_DEMAND, Amazon Linux 2023) ────────────────────────────────────
 
 resource "aws_eks_node_group" "main" {
   count = var.enable_node_group_main ? 1 : 0
@@ -17,7 +17,7 @@ resource "aws_eks_node_group" "main" {
 
   instance_types = var.node_group_main_instance_types
   capacity_type  = "ON_DEMAND"
-  ami_type       = "AL2_x86_64"
+  ami_type       = "AL2023_x86_64_STANDARD"
 
   scaling_config {
     min_size     = var.node_group_main_scaling.min
@@ -32,7 +32,7 @@ resource "aws_eks_node_group" "main" {
   labels = {
     "role"     = "main"
     "capacity" = "on-demand"
-    "node-os"  = "al2"
+    "node-os"  = "al2023"
   }
 
   tags = merge(var.tags, local.autoscaler_tags, {
@@ -50,7 +50,7 @@ resource "aws_eks_node_group" "main" {
   }
 }
 
-# ─── SPOT (Amazon Linux 2) ───────────────────────────────────────────────────
+# ─── SPOT (Amazon Linux 2023) ───────────────────────────────────────────────
 
 resource "aws_eks_node_group" "spot" {
   count = var.enable_node_group_spot ? 1 : 0
@@ -62,7 +62,7 @@ resource "aws_eks_node_group" "spot" {
 
   instance_types = var.node_group_spot_instance_types
   capacity_type  = "SPOT"
-  ami_type       = "AL2_x86_64"
+  ami_type       = "AL2023_x86_64_STANDARD"
 
   scaling_config {
     min_size     = var.node_group_spot_scaling.min
@@ -77,7 +77,7 @@ resource "aws_eks_node_group" "spot" {
   labels = {
     "role"     = "spot"
     "capacity" = "spot"
-    "node-os"  = "al2"
+    "node-os"  = "al2023"
   }
 
   taint {
@@ -164,7 +164,7 @@ resource "aws_eks_node_group" "graviton" {
 
   instance_types = var.node_group_graviton_instance_types
   capacity_type  = "ON_DEMAND"
-  ami_type       = "AL2_ARM_64"
+  ami_type       = "AL2023_ARM_64_STANDARD"
 
   scaling_config {
     min_size     = var.node_group_graviton_scaling.min
@@ -179,7 +179,7 @@ resource "aws_eks_node_group" "graviton" {
   labels = {
     "role"               = "graviton"
     "capacity"           = "on-demand"
-    "node-os"            = "al2"
+    "node-os"            = "al2023"
     "kubernetes.io/arch" = "arm64"
   }
 
@@ -210,7 +210,7 @@ resource "aws_eks_node_group" "graviton_spot" {
 
   instance_types = var.node_group_graviton_instance_types
   capacity_type  = "SPOT"
-  ami_type       = "AL2_ARM_64"
+  ami_type       = "AL2023_ARM_64_STANDARD"
 
   scaling_config {
     min_size     = var.node_group_graviton_spot_scaling.min
@@ -225,7 +225,7 @@ resource "aws_eks_node_group" "graviton_spot" {
   labels = {
     "role"               = "graviton-spot"
     "capacity"           = "spot"
-    "node-os"            = "al2"
+    "node-os"            = "al2023"
     "kubernetes.io/arch" = "arm64"
   }
 

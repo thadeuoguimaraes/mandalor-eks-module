@@ -69,6 +69,11 @@ resource "aws_iam_role_policy_attachment" "nodes_cloudwatch" {
   role       = aws_iam_role.nodes.name
 }
 
+resource "aws_iam_role_policy_attachment" "nodes_ebs_csi" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  role       = aws_iam_role.nodes.name
+}
+
 resource "aws_iam_instance_profile" "nodes" {
   name = "${var.cluster_name}-nodes"
   role = aws_iam_role.nodes.name

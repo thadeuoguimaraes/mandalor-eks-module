@@ -22,7 +22,7 @@ module "eks" {
 
   enable_cluster_autoscaler = true
   enable_metrics_server     = true
-  enable_kube_state_metrics = false
+  enable_kube_state_metrics = true
 
   enable_node_group_spot     = false
   enable_node_group_critical = false

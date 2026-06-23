@@ -83,11 +83,9 @@ module "eks" {
   enable_cluster_autoscaler        = true
   cluster_autoscaler_chart_version = "9.58.0"
 
-  enable_metrics_server        = true
-  metrics_server_chart_version = "3.13.1"
-
-  enable_kube_state_metrics        = true
-  kube_state_metrics_chart_version = "5.30.0"
+  # Managed externally via helm_metrics_server.tf and helm_kube_state_metrics.tf
+  enable_metrics_server     = false
+  enable_kube_state_metrics = false
 
   enable_node_termination_handler        = true
   node_termination_handler_chart_version = "0.21.0"

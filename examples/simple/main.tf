@@ -21,8 +21,10 @@ module "eks" {
   }
 
   enable_cluster_autoscaler = true
-  enable_metrics_server     = true
-  enable_kube_state_metrics = true
+
+  # Managed externally via helm_metrics_server.tf and helm_kube_state_metrics.tf
+  enable_metrics_server     = false
+  enable_kube_state_metrics = false
 
   enable_node_group_spot     = false
   enable_node_group_critical = false

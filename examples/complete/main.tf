@@ -7,7 +7,7 @@ module "eks" {
   source = "../../"
 
   cluster_name       = var.cluster_name
-  kubernetes_version = "1.33"
+  kubernetes_version = "1.35"
 
   vpc_id             = var.vpc_id
   private_subnet_ids = var.private_subnet_ids
@@ -72,7 +72,7 @@ module "eks" {
       version = "v1.13.2-eksbuild.11"
     }
     kube-proxy = {
-      version = "v1.33.10-eksbuild.13"
+      version = "v1.35.0-eksbuild.2"
     }
     aws-ebs-csi-driver = {
       version = "v1.62.0-eksbuild.1"

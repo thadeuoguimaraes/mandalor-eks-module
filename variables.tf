@@ -10,7 +10,7 @@ variable "cluster_name" {
 variable "kubernetes_version" {
   type        = string
   description = "Versão do Kubernetes."
-  default     = "1.33"
+  default     = "1.35"
 }
 
 variable "cluster_log_types" {
@@ -239,7 +239,7 @@ variable "eks_addons" {
       version = "v1.13.2-eksbuild.11"
     }
     kube-proxy = {
-      version = "v1.33.10-eksbuild.13"
+      version = "v1.35.0-eksbuild.2"
     }
     aws-ebs-csi-driver = {
       version = "v1.62.0-eksbuild.1"

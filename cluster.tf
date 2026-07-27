@@ -44,6 +44,6 @@ resource "aws_eks_cluster" "this" {
 
 resource "aws_eks_access_entry" "nodes" {
   cluster_name  = aws_eks_cluster.this.id
-  principal_arn = aws_iam_role.cluster.arn
+  principal_arn = aws_iam_role.nodes.arn
   type          = "EC2_LINUX"
 }
